@@ -66,6 +66,7 @@ gemini.api.key=your-gemini-api-key
    ```bash
    ./mvnw spring-boot:run
    ```
+    or run on eclipse.
 3. Open `index.html` in browser to chat
 
 ---

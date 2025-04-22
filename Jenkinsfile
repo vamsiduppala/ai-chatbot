@@ -15,7 +15,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/your/repo.git' // or use SCM from Jenkins job
+                git url: 'https://github.com/vamsiduppala/ai-chatbot.git' // or use SCM from Jenkins job
             }
         }
 

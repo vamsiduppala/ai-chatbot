@@ -2,40 +2,32 @@ pipeline {
     agent any
 
     environment {
-        WAR_NAME = "smart-chatbot-system.war"
-        DEPLOY_DIR = "/opt/tomcat/webapps/"
-    }
-
-    tools {
-        maven 'Maven 3.8.1'
+        JAVA_HOME = 'C:\\Users\\vamsi\\.p2\\pool\\plugins\\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.6.v20250130-0529\\jre'
+        PATH = "${JAVA_HOME}\\bin:${env.PATH}"
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/vamsiduppala/ai-chatbot.git' 
+                checkout scm
             }
         }
 
         stage('Build WAR') {
             steps {
-                sh 'mvn clean package'
+                script {
+                    // You can now run your build command
+                    bat 'mvn clean package'
+                }
             }
         }
 
         stage('Deploy WAR') {
             steps {
-                sh "cp target/${WAR_NAME} ${DEPLOY_DIR}"
+                script {
+                    // Deploy your WAR file here
+                }
             }
-        }
-    }
-
-    post {
-        success {
-            echo '!!! Application deployed successfully !!!'
-        }
-        failure {
-            echo 'X Deployment failed X'
         }
     }
 }
